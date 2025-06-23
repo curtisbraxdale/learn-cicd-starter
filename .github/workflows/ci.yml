@@ -23,13 +23,18 @@ jobs:
   style:
     name: Style
     runs-on: ubuntu-latest
-
     steps:
       - name: Install staticcheck
         run: go install honnef.co/go/tools/cmd/staticcheck@latest
 
+      - name: List staticcheck binary
+        run: ls -l $HOME/go/bin
+
       - name: Add go bin to PATH
         run: echo "$HOME/go/bin" >> $GITHUB_PATH
+
+      - name: Check staticcheck version
+        run: which staticcheck && staticcheck --version
 
       - name: Enforce Styling
         run: test -z $(go fmt ./...)
