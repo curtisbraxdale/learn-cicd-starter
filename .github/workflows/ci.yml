@@ -27,7 +27,12 @@ jobs:
     steps:
       - name: Install staticcheck
         run: go install honnef.co/go/tools/cmd/staticcheck@latest
+
+      - name: Add go bin to PATH
+        run: echo "$HOME/go/bin" >> $GITHUB_PATH
+
       - name: Enforce Styling
         run: test -z $(go fmt ./...)
+
       - name: Staticcheck
         run: staticcheck ./...
