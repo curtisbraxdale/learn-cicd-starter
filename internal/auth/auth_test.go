@@ -6,7 +6,7 @@ import (
 )
 
 func TestGetAPIKey(t *testing.T) {
-	expectedOutput := "broken- 8jv083qj0q83j4f345t"
+	expectedOutput := "8jv083qj0q83j4f345t"
 	testRequest, _ := http.NewRequest("GET", ".", nil)
 	testRequest.Header.Set("Authorization", "ApiKey 8jv083qj0q83j4f345t")
 	actualOutput, err := GetAPIKey(testRequest.Header)
